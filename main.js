@@ -1,4 +1,16 @@
 // Cena de boas-vindas
+
+function create () {
+    //evento de mudança de orientação
+    game.scale.on('orientationchange', function(orientation) {
+        if (orientation === Phaser.Scale.PORTRAIT) {
+            console.log('PORTRAIT')
+        }  
+        if (orientation === Phaser.Scale.LANDSCAPE) {
+            console.log('LANDSCAPE')
+        } 
+    });
+}
 class WelcomeScene extends Phaser.Scene {
     constructor() {
         super({ key: 'WelcomeScene' });
@@ -177,6 +189,12 @@ const config = {
     type: Phaser.AUTO,
     width: 1024,
     height: 512,
+
+    scale: {
+        mode: Phaser.Scale.FIT,
+        autoCenter: Phaser.Scale.CENTER_BOTH
+    },
+
     scene: [WelcomeScene, GameScene, GameOverScene],
     physics: {
         default: 'arcade',
